@@ -4,6 +4,7 @@ import com.dh.bd.test.ms.bd.test.model.dto.ImageDTO;
 import com.dh.bd.test.ms.bd.test.model.dto.TestImgDTO;
 import com.dh.bd.test.ms.bd.test.service.IAccommodationService;
 import com.dh.bd.test.ms.bd.test.service.IImageService;
+import com.dh.bd.test.ms.bd.test.service.view.IVIewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,9 @@ public class ControllerAcc {
     private IAccommodationService accommodationService;
 
     @Autowired
+    private IVIewService ivIewService;
+
+    @Autowired
     private IImageService imageService;
 
     @GetMapping("/listAcc")
@@ -27,6 +31,14 @@ public class ControllerAcc {
         Map response = new HashMap<>();
 
         response.put("respuesta", accommodationService.findAll());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/view/{title}")
+    public ResponseEntity<?> view(@PathVariable String title) {
+        Map response = new HashMap<>();
+
+        response.put("respuesta", ivIewService.findByTitle(title));
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

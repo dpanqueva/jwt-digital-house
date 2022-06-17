@@ -8,3 +8,6 @@ INSERT INTO usuarios (email,pass,enabled,role_id,name) VALUES('sarasofia2610@gma
 INSERT INTO accommodations (address, cancellation_policy, description, latitude, longitude, rating, stars, title) VALUES ('algo', '1', 'cualquier', '12.2', '12.3', '2', '1', 'titulo');
 INSERT INTO accommodations (address, cancellation_policy, description, latitude, longitude, rating, stars, title) VALUES ('algo1', '1', 'cualquier1', '12.2', '12.3', '2', '1', 'titulo1');
 INSERT INTO accommodations (address, cancellation_policy, description, latitude, longitude, rating, stars, title) VALUES ('algo151', '1', 'cualquier51', '12.12', '12.13', '2', '1', 'titulo151');
+
+INSERT INTO `cam_test`.`images` (`title`, `url`, `accommodation_id`) VALUES ('title1', 'url1', '1');
+INSERT INTO `cam_test`.`images` (`title`, `url`, `accommodation_id`) VALUES ('tile2', 'url2', '2');

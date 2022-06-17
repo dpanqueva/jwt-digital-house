@@ -32,7 +32,7 @@ public class ResourcesServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         /** public routes*/
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/v1/listAcc", "/api/v1/detail/**").permitAll()
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/v1/view/**","/api/v1/listAcc", "/api/v1/detail/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/create-test").hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/v1/create-image").hasAnyRole("USER")
                 .anyRequest().authenticated()
