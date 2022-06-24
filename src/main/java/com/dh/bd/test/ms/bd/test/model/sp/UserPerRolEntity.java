@@ -8,12 +8,14 @@ import org.hibernate.annotations.Immutable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "user_rol_test")
 @Immutable
 public class UserPerRolEntity {
 
