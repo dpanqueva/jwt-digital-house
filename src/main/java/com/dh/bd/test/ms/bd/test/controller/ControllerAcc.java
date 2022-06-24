@@ -2,8 +2,10 @@ package com.dh.bd.test.ms.bd.test.controller;
 
 import com.dh.bd.test.ms.bd.test.model.dto.ImageDTO;
 import com.dh.bd.test.ms.bd.test.model.dto.TestImgDTO;
+import com.dh.bd.test.ms.bd.test.model.sp.UserPerRolEntity;
 import com.dh.bd.test.ms.bd.test.service.IAccommodationService;
 import com.dh.bd.test.ms.bd.test.service.IImageService;
+import com.dh.bd.test.ms.bd.test.service.sp.ISPExecService;
 import com.dh.bd.test.ms.bd.test.service.view.IVIewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -22,6 +25,9 @@ public class ControllerAcc {
 
     @Autowired
     private IVIewService ivIewService;
+
+    @Autowired
+    private ISPExecService spExecService;
 
     @Autowired
     private IImageService imageService;
@@ -39,6 +45,15 @@ public class ControllerAcc {
         Map response = new HashMap<>();
 
         response.put("respuesta", ivIewService.findByTitle(title));
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/user-per-rol")
+    public ResponseEntity<?> spExec() {
+        Map response = new HashMap<>();
+        List<UserPerRolEntity> userPerRol = spExecService.executeSP();
+
+        response.put("respuesta", userPerRol);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
